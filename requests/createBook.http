@@ -1,0 +1,12 @@
+POST http://localhost:5000/books
+Content-Type: application/json
+
+{
+    "name": "The Gatsby",
+    "author": "F. Scott ",
+    "synopsis": "A classic American dream.",
+    "pageCount": 2198,
+    "price": 712.99,
+    "isAvailable": true,
+    "coverImage": null
+}

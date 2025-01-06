@@ -1,0 +1,7 @@
+PUT http://localhost:5000/books/3
+Content-Type: application/json
+
+{
+    "pageCount": 218,
+    "price": 358.79
+}
