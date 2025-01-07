@@ -16,8 +16,8 @@ module.exports.updateBookMW = async (req, res, next) => {
 module.exports.createValidationMW = async (req, res, next) => {
 
   try {
-    const user = await CREATE_BOOK_SCHEMA.validate(req.body);
-    req.user = user;
+    const book = await CREATE_BOOK_SCHEMA.validate(req.body);
+    req.book = book;
     next();
   } catch (error) {
     res.status(400).send(error.message);

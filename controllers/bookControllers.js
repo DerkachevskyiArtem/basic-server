@@ -14,15 +14,18 @@ module.exports.getBook = async (req, res) => {
   res.send(book);
 };
 
-module.exports.createBook = async (req, res, next) => {
+module.exports.createBook = async (req, res) => {
   try {
-    const { body } = req;
+    const { book, file } = req;
 
     const newBook = await Book.create({
-      ...body,
+      ...book,
+      coverImage: file.filename,
     });
 
-    res.status(201).send(newBook);
+    res.status(201).send({
+      newBook,
+    });
   } catch (err) {
     throw new Error(`Failed to create book: ${err.message}`);
   }
