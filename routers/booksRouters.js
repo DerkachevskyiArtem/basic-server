@@ -29,7 +29,7 @@ const booksRouter = express.Router();
 booksRouter.get('/', BooksController.getBooks);
 booksRouter.get('/:bookId', BooksController.getBook);
 booksRouter.delete('/:bookId', BooksController.deleteBook);
-booksRouter.put('/:bookId',updateBookMW, BooksController.updateBook);
+booksRouter.put('/:bookId',upload.single('bookImage'), updateBookMW, BooksController.updateBook);
 booksRouter.post(
   '/',
   upload.single('bookImage'),

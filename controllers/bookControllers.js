@@ -48,10 +48,17 @@ module.exports.updateBook = async (req, res) => {
   const {
     book,
     params: { bookId },
+    file,
   } = req;
 
   try {
-    const updatedBook = await Book.updateOne(+bookId, book);
+    const updatedData = { ...book };
+
+    if (file) {
+      updatedData.coverImage = file.filename;
+    }
+
+    const updatedBook = await Book.updateOne(+bookId, updatedData);
     res.send(updatedBook);
   } catch (err) {
     res.status(404).send(err.message);
